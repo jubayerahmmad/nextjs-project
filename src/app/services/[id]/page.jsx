@@ -1,13 +1,12 @@
-import dbConnect, { collectionNames } from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const ServiceDetails = async ({ params }) => {
-  const id = await params;
-  const servicesCollection = dbConnect(collectionNames.serviceCollection);
-  const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
+  const p = await params;
+
+  const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
+  const data = await res?.json();
+  // console.log(data);
   return (
     <div className="container mx-auto">
       <section className="flex justify-center ">
@@ -37,7 +36,7 @@ const ServiceDetails = async ({ params }) => {
             height={280}
             alt={data.title}
           />
-          <h1 className="font-bold text-3xl">{data.title}</h1>
+          <h1 className="font-bold text-3xl">{data?.title}</h1>
           <p className="text-justify">{data?.description}</p>
         </div>
         {/* Right Side */}

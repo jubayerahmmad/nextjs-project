@@ -1,10 +1,35 @@
 "use client";
 import Link from "next/link";
 import SocialLogin from "./SocialLogin";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
-  const handleSubmit = (e) => {
+  const router = useRouter();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+        redirect: false,
+      });
+      if (res.ok) {
+        router.push("/");
+        form.reset();
+        toast.success("Login Successful");
+      } else {
+        toast.error("Authentication Failed");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Authentication Failed");
+    }
   };
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-8">

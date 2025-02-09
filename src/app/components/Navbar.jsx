@@ -2,20 +2,21 @@
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data, status } = useSession();
+  console.log(status);
+  console.log(data);
+
   return (
     <div className="bg-gray-200 shadow-md px-6 py-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
@@ -55,12 +56,22 @@ const Navbar = () => {
 
         {/* Right: Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="outline" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/register">Register</Link>
-          </Button>
+          {status === "authenticated" ? (
+            <>
+              <Button onClick={() => signOut()} variant="outline">
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="outline" asChild>
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/register">Register</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Hamburger Icon for Mobile */}
@@ -98,16 +109,28 @@ const Navbar = () => {
                     <Link href="/services">Services</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Button variant="outline" asChild>
-                    <Link href="/login">Login</Link>
-                  </Button>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Button asChild>
-                    <Link href="/register">Register</Link>
-                  </Button>
-                </NavigationMenuItem>
+                {status === "authenticated" ? (
+                  <>
+                    <NavigationMenuItem>
+                      <Button variant="outline" asChild>
+                        Log Out
+                      </Button>
+                    </NavigationMenuItem>
+                  </>
+                ) : (
+                  <>
+                    <NavigationMenuItem>
+                      <Button variant="outline" asChild>
+                        <Link href="/login">Login</Link>
+                      </Button>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <Button asChild>
+                        <Link href="/register">Register</Link>
+                      </Button>
+                    </NavigationMenuItem>
+                  </>
+                )}
               </NavigationMenuList>
             </NavigationMenu>
           </div>
