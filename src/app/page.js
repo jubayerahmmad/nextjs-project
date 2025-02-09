@@ -1,3 +1,10 @@
+import { Button } from "@/components/ui/button";
+import Services from "./components/Services";
+
 export default function Home() {
-  return <div className="text-4xl">Hello World</div>;
+  return (
+    <div>
+      <Services />
+    </div>
+  );
 }
