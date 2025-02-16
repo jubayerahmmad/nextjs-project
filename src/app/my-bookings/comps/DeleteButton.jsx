@@ -6,9 +6,12 @@ const DeleteButton = ({ id }) => {
   const router = useRouter();
   const handleDelete = async () => {
     // return console.log(id);
-    const res = await fetch(`http://localhost:3000/api/service/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://car-doctor-smoky.vercel.app/api/service/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
     router.refresh();
     console.log(data);

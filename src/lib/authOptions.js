@@ -13,10 +13,10 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log(credentials);
+        // console.log(credentials);
 
         const user = await loginUser(credentials);
-        console.log(user);
+        // console.log(user);
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
@@ -57,20 +57,11 @@ export const authOptions = {
             image,
           };
           const postUser = await userCollection.insertOne(userData);
-          console.log("user posted", postUser);
+          // console.log("user posted", postUser);
         }
       }
 
       return true;
     },
-    // async redirect({ url, baseUrl }) {
-    //   return baseUrl;
-    // },
-    // async session({ session, token, user }) {
-    //   return session;
-    // },
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   return token;
-    // },
   },
 };

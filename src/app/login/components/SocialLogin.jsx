@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 const SocialLogin = () => {
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const router = useRouter();
   const handleSocialLogin = (providerName) => {
     signIn(providerName);

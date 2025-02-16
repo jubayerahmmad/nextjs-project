@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const UpdateBookingForm = ({ data }) => {
   const { data: session } = useSession();
   const router = useRouter();
-  console.log(data);
+  // console.log(data);
 
   const handleUpdateBooking = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const UpdateBookingForm = ({ data }) => {
     // return console.log(bookingPayload);
 
     const res = await fetch(
-      `http://localhost:3000/api/my-booking/${data._id}`,
+      `https://car-doctor-smoky.vercel.app/api/my-booking/${data._id}`,
       {
         method: "PATCH",
         body: JSON.stringify(bookingPayload),

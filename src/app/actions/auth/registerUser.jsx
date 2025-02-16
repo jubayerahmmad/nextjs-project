@@ -14,7 +14,7 @@ export const registerUser = async (userData) => {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
     const result = await userCollection.insertOne(userData);
-    console.log(result);
+    // console.log(result);
   }
   return null;
 };

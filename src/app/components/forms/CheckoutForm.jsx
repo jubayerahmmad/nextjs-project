@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 
 const CheckoutForm = ({ data }) => {
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
 
   const handleBookService = async (e) => {
     e.preventDefault();
@@ -30,15 +30,15 @@ const CheckoutForm = ({ data }) => {
       service_price: data.price,
     };
 
-    console.log(bookingPayload);
+    // console.log(bookingPayload);
 
-    const res = await fetch("http://localhost:3000/api/service", {
+    const res = await fetch("https://car-doctor-smoky.vercel.app/api/service", {
       method: "POST",
       body: JSON.stringify(bookingPayload),
     });
 
     const postedResponse = await res.json();
-    console.log(postedResponse);
+    // console.log(postedResponse);
     form.reset();
   };
 

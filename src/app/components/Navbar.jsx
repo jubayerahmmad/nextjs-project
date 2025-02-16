@@ -14,8 +14,8 @@ import { useState } from "react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data, status } = useSession();
-  console.log(status);
-  console.log(data);
+  // console.log(status);
+  // console.log(data);
 
   return (
     <div className="bg-gray-200 shadow-md px-6 py-4">

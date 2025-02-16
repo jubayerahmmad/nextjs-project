@@ -9,7 +9,9 @@ export default async function BookingUpdatePage({ params }) {
   const singleData = await bookingCollection.findOne({
     _id: new ObjectId(param.id),
   });
-  //   const res = await fetch(`https://localhost:3000/api/my-booking/${param.id}`);
+  //   const res = await fetch(`https://localhost:3000/api/my-booking/${param.id}`, {
+  //   headers: await headers()
+  // });
   //   const singleData = await res.json();
   return (
     <div>
