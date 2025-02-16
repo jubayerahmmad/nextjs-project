@@ -9,15 +9,15 @@ const ServiceDetails = async ({ params }) => {
   // console.log(data);
   return (
     <div className="container mx-auto">
-      <section className="flex justify-center ">
-        <figure className="relative">
+      <section className="flex justify-center">
+        <figure className="relative w-full">
           <Image
             src={"/assets/images/checkout/checkout.png"}
-            width={1137}
+            width={1237}
             height={300}
             alt={"banner"}
           />
-          <div className="transparent-layer overlay-bg absolute w-full h-full border-2 border-red-400 top-0">
+          <div className="transparent-layer overlay-bg absolute w-full h-full top-0">
             <div className="w-full h-full font-bold text-2xl flex items-center ps-16">
               <div>
                 <h1 className="text-white">{data.title}</h1>

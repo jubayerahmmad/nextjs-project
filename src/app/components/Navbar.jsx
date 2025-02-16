@@ -35,19 +35,22 @@ const Navbar = () => {
                   <Link href="/">Home</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/about">About</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/contact">Contact</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/services">Services</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/my-bookings">My Bookings</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -86,7 +89,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-[72px] left-0 right-0 flex justify-center font-bold bg-white shadow-lg md:hidden">
+          <div className="absolute top-[72px] left-0 right-0 flex justify-center font-bold bg-white shadow-lg md:hidden z-20">
             <NavigationMenu>
               <NavigationMenuList className="flex flex-col gap-4 p-4">
                 <NavigationMenuItem>
